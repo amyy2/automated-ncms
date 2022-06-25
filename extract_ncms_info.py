@@ -1,13 +1,14 @@
 from selenium.webdriver.common.by import By
 from selenium import webdriver
  
-def extract_info(driver, dispo):
+def extract_info(driver, dispo, AC):
     '''
     Extracts an HTML file containing all relevant NCMS information from the NCMS extract website
  
         Args:
             driver (WebDriver): pointer to Selenium WebDriver object defined outside the function
             dispo (bool): True for extracting disposition text, False otherwise
+            AC (int): Number corresponding to current aircraft
     '''
  
     url = "http://eclipse.ca.aero.bombardier.net/quality/ncms/NCMSExtTool.asp"
@@ -67,15 +68,15 @@ def extract_info(driver, dispo):
     range = driver.find_element(By.ID, 'AcSelR')
     range.click()
     ac_from = driver.find_element(By.ID, 'AcFrom')
-    ac_from.send_keys('70128')
+    ac_from.send_keys(str(AC))
     ac_to = driver.find_element(By.ID, 'AcTo')
-    ac_to.send_keys('70128')
+    ac_to.send_keys(str(AC))
    
     # submit
     submit = driver.find_element(By.ID, 'button')
     submit.click()
  
-    print(True)
+    print('Finished processing', ('with dispo' if dispo == True else 'without dispo'))
  
 if __name__ == "__main__":
     driver = webdriver.Chrome('C:/Users/B0640469/Documents/webdriver/chromedriver.exe')
