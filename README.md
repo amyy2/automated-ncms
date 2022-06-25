@@ -24,12 +24,12 @@ py -m pip install <package name>
 ```
 If an error appears reading `certificate verify failed: unable to get local issuer certificate`, this means the package needs another dependency, which will be specified at the top of the error. For example, in the command prompt window below when attempting to install `Tensorflow` it's looking for `astunparse`, which needs to be installed before `Tensorflow`. Repeat the previous steps for each required dependency.
  
-![example](cmd.png)
+![example](cmd.PNG)
  
 *NCMS excel file
 *editing path
  
-## Usage <a name="usage"></a>
+## Usage <a name="usage"></a>s
  
 To stop the software, navigate to the terminal in VS Code and type `Ctrl+C` and close the terminal.
  
